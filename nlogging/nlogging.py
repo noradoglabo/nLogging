@@ -12,25 +12,25 @@ from logging import DEBUG, INFO, WARNING, ERROR, CRITICAL
 # Released under the MIT License
 # https://opensource.org/licenses/mit-license.php
 #==========================================================================
+
+NOOUT = CRITICAL + 100
+
 class nLogging:
-	DEBUG = DEBUG
-	INFO = INFO
-	WARNING = WARNING
-	ERROR = ERROR
-	CRITICAL = CRITICAL
-	NONE = CRITICAL + 100
 
 #--------------------------------------------------------------------------
 # constructor
 #--------------------------------------------------------------------------
-	def __init__(self, logging_name: str) -> None:
+	def __init__(self, logging_name: str, logfile_name='') -> None:
 		self._logger = getLogger(logging_name + '_logger')
 		self._logger.setLevel(DEBUG)
 
 		self._h_stream = StreamHandler()
 		self._h_stream.setLevel(DEBUG)
 
-		self._h_file = FileHandler(filename="{}.log".format(logging_name), encoding="utf-8")
+		if logfile_name == '':
+			self._h_file = FileHandler(filename="{}.log".format(logging_name), encoding="utf-8")
+		else:
+			self._h_file = FileHandler(filename=logfile_name, encoding="utf-8")
 		self._h_file.setLevel(DEBUG)
 
 		self._logger.addHandler(self._h_stream)
@@ -94,23 +94,3 @@ class nLogging:
 			logging_text = '{} {} {}({}) [{}] {}'.format(log_time, outlevel, file_name, line_no, func_name, message)
 			log_proc(logging_text)
 
-
-#--------------------------------------------------------------------------
-# Usage
-#--------------------------------------------------------------------------
-def sample():
-	logging = nLogging('YourLoggerName')
-	logging.set_filename('./sample.log')
-	logging.set_out_level(stream_lv=nLogging.DEBUG, file_lv=nLogging.DEBUG)
-	logging.output(nLogging.DEBUG, 'メッセージ(DEBUG)。')
-	logging.output(nLogging.CRITICAL, 'message(CRITICAL).')
-	logging.set_out_level(stream_lv=nLogging.INFO, file_lv=nLogging.INFO)
-	logging.output(nLogging.DEBUG, 'メッセージ(DEBUG)。')
-	logging.output(nLogging.CRITICAL, 'message(CRITICAL).')
-	logging.set_out_level(stream_lv=nLogging.NONE, file_lv=nLogging.NONE)
-	logging.output(nLogging.DEBUG, 'メッセージ(DEBUG)。')
-	logging.output(nLogging.CRITICAL, 'message(CRITICAL).')
-
-
-if __name__ == "__main__":
-	sample()

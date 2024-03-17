@@ -27,8 +27,7 @@ def subfunc2():
 
 
 
-logging = nLogging('YourLoggerName')
-logging.set_filename('./sample.log')
+logging = nLogging('YourLoggerName', './sample.log')
 
 logging.set_out_level(stream_lv=DEBUG, file_lv=DEBUG)
 logging.output(DEBUG, 'message for debugging.')
