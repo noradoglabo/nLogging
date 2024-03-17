@@ -43,14 +43,14 @@ subfunc2()
 
 result(stream)
 ```
-2024/03/17 18:18:29.602 DEBUG    exsample.py(19) [<module>] message for debugging.
-2024/03/17 18:18:29.602 CRITICAL exsample.py(20) [<module>] message for critical!
+2024/03/17 18:18:29.602 DEBUG    exsample.py(18) [<module>] message for debugging.
+2024/03/17 18:18:29.602 CRITICAL exsample.py(19) [<module>] message for critical!
 2024/03/17 18:18:29.602 CRITICAL exsample.py(7) [subfunc1] message for critical!
 ```
 result(file)
 ```text
-2024/03/17 18:18:29.602 DEBUG    exsample.py(19) [<module>] message for debugging.
-2024/03/17 18:18:29.602 CRITICAL exsample.py(20) [<module>] message for critical!
+2024/03/17 18:18:29.602 DEBUG    exsample.py(18) [<module>] message for debugging.
+2024/03/17 18:18:29.602 CRITICAL exsample.py(19) [<module>] message for critical!
 2024/03/17 18:18:29.602 CRITICAL exsample.py(7) [subfunc1] message for critical!
 2024/03/17 18:18:29.602 CRITICAL exsample.py(11) [subfunc2] message for critical!
 ```
