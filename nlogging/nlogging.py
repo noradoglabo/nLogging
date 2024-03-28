@@ -84,7 +84,7 @@ class nLogging:
 			log_proc = self._logger.warning
 			outlevel = 'WARNING '
 		elif level == ERROR:
-			log_proc = self._logger.eror
+			log_proc = self._logger.error
 			outlevel = 'ERROR   '
 		elif level == CRITICAL:
 			log_proc = self._logger.critical
